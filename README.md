@@ -35,7 +35,7 @@ const RandomName = new ExtraRandomName({
     */
 });
 
-var name = RandomName.name; //Devuelve el nombre generado (David Moreno)
+var name = RandomName.Name; //Devuelve el nombre generado (David Moreno)
 
 ```
 
@@ -55,5 +55,7 @@ const RandomGender = new ExtraRandomGender({
     Mujer: 50 //La probabilidad de que se genere una 'Mujer'
 });
 //Por defecto hay un 50% de probabilidad de aparecer cualquiera de los dos.
+
+var gender = RandomGender.Gender; //Devuelve el genero generado (Hombre o Mujer)
 
 ```

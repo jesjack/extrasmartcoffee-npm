@@ -109,10 +109,10 @@ class ExtraSmartCoffee {
                     }
                     name += (i + 1 < Coffee.Syntaxis.length)?' ':'';
                 }
-                this.name = name;
+                this.Name = name;
             }
         }
-        public name: string;
+        public Name: string;
         public static names = {
             "Hombre": [
                 "Edgar", "Jesús", "Nasser", "Noé", "Sergio", "Mario", "Fabián", "Victor", "Hugo", "Luis", "Diego", "Pancho", "Fulano", "David", "Lorenzo", "Alan"
