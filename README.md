@@ -56,4 +56,4 @@ const RandomGender = new ExtraRandomGender({
 });
 //Por defecto hay un 50% de probabilidad de aparecer cualquiera de los dos.
 
-```# extrasmartcoffee-npm
+```
