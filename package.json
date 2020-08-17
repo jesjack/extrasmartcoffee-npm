@@ -1,0 +1,22 @@
+{
+  "name": "extrasmartcoffee",
+  "version": "1.0.0",
+  "description": "ExtraSmartCoffee Package for you <3",
+  "main": "index.ts",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jesjack/extrasmartcoffee-npm.git"
+  },
+  "keywords": [
+    "ExtraSmartCoffee"
+  ],
+  "author": "jesjack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesjack/extrasmartcoffee-npm/issues"
+  },
+  "homepage": "https://github.com/jesjack/extrasmartcoffee-npm#readme"
+}
