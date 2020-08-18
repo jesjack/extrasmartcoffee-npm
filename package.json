@@ -1,6 +1,6 @@
 {
   "name": "extrasmartcoffee",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ExtraSmartCoffee Package for you <3",
   "main": "index.ts",
   "scripts": {

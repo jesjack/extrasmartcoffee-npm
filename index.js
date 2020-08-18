@@ -3,32 +3,56 @@ var ExtraSmartCoffee = /** @class */ (function () {
     function ExtraSmartCoffee() {
     }
     var _a;
-    ExtraSmartCoffee.ExtraRandomGender = /** @class */ (function () {
-        /**
-         *
-         * @param Coffee
-         */
-        function ExtraRandomGender(Coffee) {
-            if (Coffee === void 0) { Coffee = {
-                Hombre: 50,
-                Mujer: 50 //Probabilidad de aparecer una mujer
-            }; }
-            if (typeof Coffee.Mujer === 'undefined' || typeof Coffee.Hombre === 'undefined') {
-                throw {
-                    Error: 'Mujer o Hombre indefinidos'
-                };
-            }
-            else {
-                var n_rand = Math.random() * (Coffee.Hombre + Coffee.Mujer);
-                if (n_rand <= Coffee.Hombre) {
-                    this.Gender = 'Hombre';
-                }
-                else {
-                    this.Gender = 'Mujer';
-                }
+    ExtraSmartCoffee.ExtraRandomReturn = /** @class */ (function () {
+        function ExtraRandomReturn(Coffee) {
+            var _this = this;
+            this.data = [];
+            if (typeof Coffee === 'object' && typeof Coffee.length !== 'undefined') {
+                Coffee.forEach(function (coffee) {
+                    if (typeof coffee.probability !== 'undefined' && typeof coffee["return"] !== 'undefined') {
+                        _this.data.push(coffee);
+                    }
+                });
             }
         }
-        return ExtraRandomGender;
+        ExtraRandomReturn.prototype.addData = function (Coffee) {
+            var _this = this;
+            if (typeof Coffee === 'object' && typeof Coffee.length !== 'undefined') {
+                Coffee.forEach(function (coffee) {
+                    if (typeof coffee.probability !== 'undefined' && typeof coffee["return"] !== 'undefined') {
+                        _this.data.push(coffee);
+                    }
+                    else
+                        throw {
+                            Error: 'Coffee in addData contains a wrong syntax'
+                        };
+                });
+            }
+            else
+                throw {
+                    Error: 'Coffee in addData contains a wrong syntax'
+                };
+        };
+        ExtraRandomReturn.prototype.Return = function () {
+            var tot = 0;
+            var to_return = [];
+            this.data.forEach(function (data) {
+                to_return.push({ data: data, index: tot });
+                tot += data.probability;
+            });
+            to_return.reverse();
+            var num = Math.random() * tot;
+            var ret_data;
+            var enc = false;
+            to_return.forEach(function (ret) {
+                if (ret.index < num && !enc) {
+                    ret_data = ret.data["return"];
+                    enc = true;
+                }
+            });
+            return ret_data;
+        };
+        return ExtraRandomReturn;
     }());
     ExtraSmartCoffee.ExtraRandomName = (_a = /** @class */ (function () {
             /**
@@ -97,7 +121,7 @@ var ExtraSmartCoffee = /** @class */ (function () {
                         }
                         name += (i + 1 < Coffee.Syntaxis.length) ? ' ' : '';
                     }
-                    this.name = name;
+                    this.Name = name;
                 }
             }
             return ExtraRandomName;

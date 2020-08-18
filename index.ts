@@ -1,31 +1,63 @@
 class ExtraSmartCoffee {
-    static ExtraRandomGender = class ExtraRandomGender {
-        /**
-         * 
-         * @param Coffee 
-         */
-        constructor(Coffee: {
-            Hombre: number,
-            Mujer: number
-        } = {
-            Hombre: 50, // Probabilidad de aparecer un hombre
-            Mujer: 50 //Probabilidad de aparecer una mujer
-        }) {
-            if(typeof Coffee.Mujer === 'undefined' || typeof Coffee.Hombre === 'undefined') {
-                throw {
-                    Error: 'Mujer o Hombre indefinidos'
-                };
-            } else {
-                let n_rand = Math.random() * (Coffee.Hombre + Coffee.Mujer);
-                if(n_rand <= Coffee.Hombre) {
-                    this.Gender = 'Hombre';
-                } else {
-                    this.Gender = 'Mujer';
-                }
+    static ExtraRandomReturn = class ExtraRandomReturn {
+        constructor(Coffee?: {
+            return: any,
+            probability: number
+        }[]) {
+            if(typeof Coffee === 'object' && typeof Coffee.length !== 'undefined') {
+                Coffee.forEach(coffee => {
+                    if(typeof coffee.probability !== 'undefined' && typeof coffee.return !== 'undefined') {
+                        this.data.push(coffee);
+                    }
+                });
             }
         }
 
-        public Gender;
+        private data: {
+            probability: number,
+            return: any
+        }[] = [];
+
+        public addData(Coffee: {
+            probability: number,
+            return: any
+        }[]) {
+            if(typeof Coffee === 'object' && typeof Coffee.length !== 'undefined') {
+                Coffee.forEach(coffee => {
+                    if(typeof coffee.probability !== 'undefined' && typeof coffee.return !== 'undefined') {
+                        this.data.push(coffee);
+                    } else throw {
+                        Error: 'Coffee in addData contains a wrong syntax'
+                    };
+                });
+            } else throw {
+                Error: 'Coffee in addData contains a wrong syntax'
+            };
+        }
+
+        public Return() {
+            var tot = 0;
+            var to_return: {data: {
+                probability: number,
+                return: any
+            }, index: number}[] = [];
+            this.data.forEach(data => {
+                to_return.push({data: data, index: tot});
+                tot += data.probability;
+            });
+            to_return.reverse();
+
+            var num = Math.random() * tot;
+            var ret_data;
+            var enc = false;
+            to_return.forEach(ret => {
+                if(ret.index < num && !enc) {
+                    ret_data = ret.data.return;
+                    enc = true;
+                }
+            });
+            return ret_data;
+        }
     }
 
     static ExtraRandomName = class ExtraRandomName {
