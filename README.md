@@ -30,9 +30,11 @@ const RandomName = new ExtraRandomName({
     
 });
 ```
-    El parametro plantilla es opcional, pero si se coloca tiene que estar bien definido o se mostrara un error, tiene que tener un arreglo por cada nombre de hombre, mujer y cada apellido y dicho array tiene que contener informacion suficiente, de otro modo se lanzará un error.
 
-    Si se decide no usar el parametreo plantilla se usara una plantilla interna con un almacen repleto de nombres
+El parametro plantilla es opcional, pero si se coloca tiene que estar bien definido o se mostrara un error, tiene que tener un arreglo por cada nombre de hombre, mujer y cada apellido y dicho array tiene que contener informacion suficiente, de otro modo se lanzará un error.
+
+Si se decide no usar el parametreo plantilla se usara una plantilla interna con un almacen repleto de nombres
+
 ```javascript
 
 var name = RandomName.Name; //Devuelve el nombre generado (David Moreno)
